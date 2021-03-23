@@ -142,7 +142,7 @@ if(expr2 != null)
 else
     COALESCE(expr3....);   
 
-SELECT empno, sal, comm, COALESCE(
+SELECT empno, sal, comm, COALESCE(comm, 1250)
 FROM emp;
 
 [null 실습 fn4]
