@@ -160,7 +160,28 @@ select *
 from hr.employees
 where manager_id is null;
 
+인덱스 객체
+(사용형식)
+CREATE [UNIQUE|BITMAP] INDEX 인덱스명
+    ON 테이블명(컬럼명1[, 컬럼명2, ...]) [ASC|DESC]
 
+컬럼명2개로 만들었을때 where절에 1나만 비교했다고하면 인덱스 안만든거랑 똑같다 => 인덱스로 만든 컬럼이 where절에 다 나와야된다.
+
+* 자식테이블이 부모테이블로부터 외래키로 받고 해당 컬럼이 기본키이면 식별관계이다.
+* 효율성 측면에서 식별, 비식별관계를 맺어준다. (join이 많아지면 비식별관계로?)
+
+사용예) 상품테이블에서 상품명으로 NORMAL INDEX를 구성하시오
+CREATE INDEX IDX_PROD_NAME
+    ON PROD (PROD_NAME);
+    
+사용예) 장바구니테이블에서 장바구니번호 중 3번째에서 6글자로 인덱스를 구성하시오
+CREATE INDEX IDX_CART_NO ON CART(SUBSTR(CART_NO,3,6)); --함수기반 인덱스:만들때 함수가 사용됨
+
+**인덱스의 재구성
+ - 데이터 테이블을 다른 테이블스페이스로 이동시킨 후 
+ - 자료의 삽입과 삭제 동작 후
+ (사용형식)
+ ALTER INDEX 인덱스명 REBUILD;
 
 
 
