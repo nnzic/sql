@@ -35,7 +35,8 @@ DECLARE
     V_BNAME BUYER.BUYER_NAME%TYPE;
     V_AMT NUMBER = 0; --타입의 크기를 모르면 생략할 수 있다. 하지만 초기화는 필수!!
 
-    CURSOR CUR_BUY_INFO IS
+    CURSOR CUR_BUY_INFO 
+    IS
         SELECT BUY_PROD,
                SUM(BUY_QTY)
         FROM BUYPROD
@@ -57,7 +58,8 @@ DECLARE
     V_BNAME BUYER.BUYER_NAME%TYPE;
     V_AMT NUMBER = 0; --타입의 크기를 모르면 생략할 수 있다. 하지만 초기화는 필수!!
 
-    CURSOR CUR_BUY_INFO IS
+    CURSOR CUR_BUY_INFO 
+    IS
         SELECT BUY_PROD,
                SUM(BUY_QTY) AS AMT
         FROM BUYPROD
@@ -81,7 +83,8 @@ DECLARE --(선언부)
     V_BNAME BUYER.BUYER_NAME%TYPE;
     V_AMT NUMBER := 0; --타입의 크기를 모르면 생략할 수 있다. 하지만 초기화는 필수!!
 
-    CURSOR CUR_BUY_INFO IS -- 선언부내에서 1.커서 생성
+    CURSOR CUR_BUY_INFO 
+    IS -- 선언부내에서 1.커서 생성
         SELECT BUY_PROD,
                SUM(BUY_QTY) AS AMT
         FROM BUYPROD
@@ -123,7 +126,8 @@ DECLARE
     V_COST PROD.PROD_COST%TYPE;
     V_MILE PROD.PROD_MILEAGE%TYPE;
     
-    CURSOR CUR_PROD_COST(P_LGU LPROD.LPROD_GU%TYPE) IS --커서에서 매개변수 사용 예(좋은 커서는 아님)
+    CURSOR CUR_PROD_COST(P_LGU LPROD.LPROD_GU%TYPE) 
+    IS --커서에서 매개변수 사용 예(좋은 커서는 아님)
         SELECT PROD_NAME, PROD_COST, PROD_MILEAGE
         FROM PROD
         WHERE PROD_LGU = P_LGU;
